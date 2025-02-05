@@ -29,12 +29,12 @@ export default defineConfig({
       entry: ['src/index.ts', 'src/workflow.ts'],
       name: 'twenty-shared',
       formats: ['es', 'cjs'],
+      fileName: (format, fileName) => {
+        const extension = format === 'cjs' ? 'js' : 'mjs';
+        return `${fileName}.${extension}`;
+    },
     },
     rollupOptions: {
-      output: {
-        preserveModules: true,
-        preserveModulesRoot: "src",
-      },
         external: Object.keys(packageJson.dependencies || {}),
       // preserveEntrySignatures: 'strict',
     }
