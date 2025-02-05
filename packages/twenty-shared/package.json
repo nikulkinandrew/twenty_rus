@@ -8,9 +8,9 @@
   },
   "exports": {
     "./workflow": {
-      "types": "./dist/worfklow/index.d.ts",
-      "import": "./dist/workflow/index.mjs",
-      "require": "./dist/workflow/index.js"
+      "types": "./dist/workflow.d.ts",
+      "import": "./dist/workflow.mjs",
+      "require": "./dist/workflow.js"
     },
     "./oui": {
       "types": "./dist/ouioui.d.ts",
