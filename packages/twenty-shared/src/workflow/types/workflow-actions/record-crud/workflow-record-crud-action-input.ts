@@ -1,7 +1,7 @@
 import {
-  ObjectRecordFilter,
-  ObjectRecordOrderBy,
-} from 'src/workspace/query-builder/interfaces/object-record.interface';
+    ObjectRecordFilter,
+    ObjectRecordOrderBy,
+} from '@/workspace/query-builder/interfaces/object-record.interface';
 
 type ObjectRecord = Record<string, any>;
 

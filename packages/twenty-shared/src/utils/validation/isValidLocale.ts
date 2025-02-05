@@ -1,4 +1,4 @@
-import { APP_LOCALES } from 'src/constants/Locales';
+import { APP_LOCALES } from '@/constants/Locales';
 
 export const isValidLocale = (
   value: string | null,
