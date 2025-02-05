@@ -6,9 +6,6 @@
     "strict": true,
     "types": ["vite/client"],
     "baseUrl": ".",
-    "paths": {
-      "twenty-shared": ["packages/twenty-shared/dist"]
-    }
   },
   "files": [],
   "include": [],

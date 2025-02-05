@@ -7,6 +7,16 @@
     "build": "npx vite build"
   },
   "exports": {
+    "./workflow": {
+      "types": "./dist/worfklow/index.d.ts",
+      "import": "./dist/workflow/index.mjs",
+      "require": "./dist/workflow/index.js"
+    },
+    "./oui": {
+      "types": "./dist/ouioui/index.d.ts",
+      "import": "./dist/ouioui/index.mjs",
+      "require": "./dist/ouioui/index.js"
+    },
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",

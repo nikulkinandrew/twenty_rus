@@ -2,6 +2,7 @@ import * as path from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import packageJson from "../../package.json";
 
 export default defineConfig({
   root: __dirname,
@@ -24,10 +25,18 @@ export default defineConfig({
       transformMixedEsModules: true,
     },
     lib: {
-      entry: 'src/index.ts',
+      // Centralized and sync with package.json
+      entry: ['src/index.ts', 'src/workflow/index.ts', 'src/ouioui/index.ts'],
       name: 'twenty-shared',
-      fileName: 'index',
       formats: ['es', 'cjs'],
     },
+    rollupOptions: {
+      output: {
+        preserveModules: true,
+        preserveModulesRoot: "src",
+      },
+        external: Object.keys(packageJson.dependencies || {}),
+      // preserveEntrySignatures: 'strict',
+    }
   },
 });

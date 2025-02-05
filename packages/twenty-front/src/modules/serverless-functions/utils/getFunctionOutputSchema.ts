@@ -1,7 +1,7 @@
-import { InputSchemaPropertyType, isDefined } from 'twenty-shared';
 import { BaseOutputSchema } from '@/workflow/workflow-variables/types/StepOutputSchema';
 import { isObject } from '@sniptt/guards';
-
+import { isDefined } from 'twenty-shared';
+import { InputSchemaPropertyType } from "twenty-shared/workflow";
 const getValueType = (value: any): InputSchemaPropertyType => {
   if (!isDefined(value) || value === null) {
     return 'unknown';
