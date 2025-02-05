@@ -1,1 +1,1 @@
-export * from './workflow-trigger.type';
+export * from './workflow-trigger';

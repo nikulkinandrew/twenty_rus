@@ -6,7 +6,7 @@ import {
   WorkflowFindRecordsActionSettings,
   WorkflowUpdateRecordActionSettings,
 } from 'src/workflow/types/workflow-actions/record-crud';
-import { WorkflowActionSettings } from '../workflow-actions/workflow-action-settings.type';
+import { WorkflowActionSettings } from '../workflow-actions/workflow-action-settings';
 
 export enum WorkflowActionType {
   CODE = 'CODE',

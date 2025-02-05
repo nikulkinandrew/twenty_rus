@@ -1,2 +1,3 @@
-export * from './input-schema.type';
-export * from './output-schema.type';
+export * from './input-schema';
+export * from './output-schema';
+

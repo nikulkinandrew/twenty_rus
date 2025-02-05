@@ -1,2 +1,3 @@
-export * from './workflow-code-action-input.type';
-export * from './workflow-code-action-settings.type';
+export * from './workflow-code-action-input';
+export * from './workflow-code-action-settings';
+

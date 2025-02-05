@@ -1,12 +1,12 @@
-import { OutputSchema } from '../workflow-builder/output-schema.type';
-import { WorkflowCodeActionSettings } from '../workflow-actions/code/workflow-code-action-settings.type';
-import { WorkflowSendEmailActionSettings } from '../workflow-actions/mail-sender/workflow-send-email-action-settings.type';
 import {
   WorkflowCreateRecordActionSettings,
   WorkflowDeleteRecordActionSettings,
   WorkflowFindRecordsActionSettings,
   WorkflowUpdateRecordActionSettings,
 } from 'src/workflow/types/workflow-actions/record-crud';
+import { OutputSchema } from '../workflow-builder/output-schema';
+import { WorkflowCodeActionSettings } from './code/workflow-code-action-settings';
+import { WorkflowSendEmailActionSettings } from './mail-sender/workflow-send-email-action-settings';
 
 export type BaseWorkflowActionSettings = {
   input: object;
