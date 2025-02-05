@@ -1,5 +1,5 @@
-import { WorkflowAction } from '@/workflow/types/workflow-actions';
-import { WorkflowTrigger } from '@/workflow/types/workflow-trigger';
+import { WorkflowAction } from '@/workflow/workflow-actions';
+import { WorkflowTrigger } from '@/workflow/workflow-trigger';
 
 export type WorkflowStatus = 'DRAFT' | 'ACTIVE' | 'DEACTIVATED';
 

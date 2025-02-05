@@ -26,7 +26,7 @@ export default defineConfig({
     },
     lib: {
       // Centralized and sync with package.json
-      entry: ['src/index.ts', 'src/workflow/index.ts', 'src/ouioui/index.ts'],
+      entry: ['src/index.ts', 'src/workflow/index.ts', 'src/ouioui.ts'],
       name: 'twenty-shared',
       formats: ['es', 'cjs'],
     },

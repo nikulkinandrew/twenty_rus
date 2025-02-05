@@ -3,7 +3,7 @@ import {
     WorkflowDeleteRecordActionSettings,
     WorkflowFindRecordsActionSettings,
     WorkflowUpdateRecordActionSettings,
-} from '@/workflow/types/workflow-actions/record-crud';
+} from '@/workflow/workflow-actions/record-crud';
 import { OutputSchema } from '../workflow-builder/output-schema';
 import { WorkflowCodeActionSettings } from './code/workflow-code-action-settings';
 import { WorkflowSendEmailActionSettings } from './mail-sender/workflow-send-email-action-settings';

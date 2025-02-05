@@ -1,4 +1,4 @@
-import { FieldMetadataType } from '@/types/FieldMetadataType';
+import { FieldMetadataType } from "@/types";
 
 export type InputSchemaPropertyType =
   | 'string'

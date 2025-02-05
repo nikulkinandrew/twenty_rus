@@ -1,12 +1,12 @@
-import { WorkflowCodeActionSettings } from '@/workflow/types/workflow-actions/code';
-import { WorkflowSendEmailActionSettings } from '@/workflow/types/workflow-actions/mail-sender';
+import { WorkflowCodeActionSettings } from '@/workflow/workflow-actions/code';
+import { WorkflowSendEmailActionSettings } from '@/workflow/workflow-actions/mail-sender';
 import {
     WorkflowCreateRecordActionSettings,
     WorkflowDeleteRecordActionSettings,
     WorkflowFindRecordsActionSettings,
     WorkflowUpdateRecordActionSettings,
-} from '@/workflow/types/workflow-actions/record-crud';
-import { WorkflowActionSettings } from '@/workflow/types/workflow-actions/workflow-action-settings';
+} from '@/workflow/workflow-actions/record-crud';
+import { WorkflowActionSettings } from '@/workflow/workflow-actions/workflow-action-settings';
 
 export enum WorkflowActionType {
   CODE = 'CODE',

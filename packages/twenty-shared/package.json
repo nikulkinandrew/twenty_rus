@@ -13,9 +13,9 @@
       "require": "./dist/workflow/index.js"
     },
     "./oui": {
-      "types": "./dist/ouioui/index.d.ts",
-      "import": "./dist/ouioui/index.mjs",
-      "require": "./dist/ouioui/index.js"
+      "types": "./dist/ouioui.d.ts",
+      "import": "./dist/ouioui.mjs",
+      "require": "./dist/ouioui.js"
     },
     ".": {
       "types": "./dist/index.d.ts",
