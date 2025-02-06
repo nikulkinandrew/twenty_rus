@@ -516,6 +516,7 @@ export type Field = {
   label: Scalars['String'];
   name: Scalars['String'];
   object?: Maybe<Object>;
+  objectMetadataId: Scalars['UUID'];
   options?: Maybe<Scalars['JSON']>;
   relation?: Maybe<Relation>;
   relationDefinition?: Maybe<RelationDefinition>;
@@ -547,6 +548,7 @@ export type FieldFilter = {
   isActive?: InputMaybe<BooleanFieldComparison>;
   isCustom?: InputMaybe<BooleanFieldComparison>;
   isSystem?: InputMaybe<BooleanFieldComparison>;
+  objectMetadataId?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<FieldFilter>>;
 };
 
@@ -1582,6 +1584,23 @@ export type SignUpOutput = {
   workspace: WorkspaceSubdomainAndId;
 };
 
+export type StringFieldComparison = {
+  eq?: InputMaybe<Scalars['String']>;
+  gt?: InputMaybe<Scalars['String']>;
+  gte?: InputMaybe<Scalars['String']>;
+  iLike?: InputMaybe<Scalars['String']>;
+  in?: InputMaybe<Array<Scalars['String']>>;
+  is?: InputMaybe<Scalars['Boolean']>;
+  isNot?: InputMaybe<Scalars['Boolean']>;
+  like?: InputMaybe<Scalars['String']>;
+  lt?: InputMaybe<Scalars['String']>;
+  lte?: InputMaybe<Scalars['String']>;
+  neq?: InputMaybe<Scalars['String']>;
+  notILike?: InputMaybe<Scalars['String']>;
+  notIn?: InputMaybe<Array<Scalars['String']>>;
+  notLike?: InputMaybe<Scalars['String']>;
+};
+
 export enum SubscriptionInterval {
   Day = 'Day',
   Month = 'Month',
@@ -1703,6 +1722,7 @@ export type UpdateFieldInput = {
   isUnique?: InputMaybe<Scalars['Boolean']>;
   label?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  objectMetadataId?: InputMaybe<Scalars['UUID']>;
   options?: InputMaybe<Scalars['JSON']>;
   settings?: InputMaybe<Scalars['JSON']>;
 };
