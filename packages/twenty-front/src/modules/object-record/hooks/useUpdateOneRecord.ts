@@ -14,6 +14,7 @@ import { computeOptimisticRecordFromInput } from '@/object-record/utils/computeO
 import { getUpdateOneRecordMutationResponseField } from '@/object-record/utils/getUpdateOneRecordMutationResponseField';
 import { sanitizeRecordInput } from '@/object-record/utils/sanitizeRecordInput';
 import { capitalize, isDefined } from 'twenty-shared';
+import { recordFromArrayWithValue } from '~/utils/array/recordFromArrayWithValue';
 import { isUndefinedOrNull } from '~/utils/isUndefinedOrNull';
 
 type useUpdateOneRecordProps = {
@@ -60,12 +61,14 @@ export const useUpdateOneRecord = <
     updateOneRecordInput: Partial<Omit<UpdatedObjectRecord, 'id'>>;
     optimisticRecord?: Partial<ObjectRecord>;
   }) => {
-    const optimisticRecordInput = computeOptimisticRecordFromInput({
-      objectMetadataItem,
-      recordInput: updateOneRecordInput,
-      cache: apolloClient.cache,
-      objectMetadataItems,
-    });
+    const optimisticRecordInput =
+      optimisticRecord ??
+      computeOptimisticRecordFromInput({
+        objectMetadataItem,
+        recordInput: updateOneRecordInput,
+        cache: apolloClient.cache,
+        objectMetadataItems,
+      });
 
     const cachedRecord = getRecordFromCache<ObjectRecord>(idToUpdate);
 
@@ -79,7 +82,7 @@ export const useUpdateOneRecord = <
 
     const computedOptimisticRecord = {
       ...cachedRecord,
-      ...(optimisticRecord ?? optimisticRecordInput),
+      ...optimisticRecordInput,
       ...{ id: idToUpdate },
       ...{ __typename: capitalize(objectMetadataItem.nameSingular) },
     };
@@ -96,11 +99,16 @@ export const useUpdateOneRecord = <
       return null;
     }
 
+    const recordGqlFields = generateDepthOneRecordGqlFields({
+      objectMetadataItem,
+      record: optimisticRecordInput,
+    });
     updateRecordFromCache({
       objectMetadataItems,
       objectMetadataItem,
       cache: apolloClient.cache,
       record: computedOptimisticRecord,
+      recordGqlFields,
     });
 
     triggerUpdateRecordOptimisticEffect({
@@ -146,11 +154,28 @@ export const useUpdateOneRecord = <
         if (isUndefinedOrNull(cachedRecord?.id)) {
           throw error;
         }
+        const cachedRecordKeys = new Set(Object.keys(cachedRecord));
+        const diffKeys = Object.keys(optimisticRecordInput).filter(
+          (diffKey) => !cachedRecordKeys.has(diffKey),
+        );
+
+        const recordGqlFields = {
+          ...generateDepthOneRecordGqlFields({
+            objectMetadataItem,
+            record: cachedRecord,
+          }),
+          ...recordFromArrayWithValue(diffKeys, true),
+        };
+
         updateRecordFromCache({
           objectMetadataItems,
           objectMetadataItem,
           cache: apolloClient.cache,
-          record: cachedRecord,
+          record: {
+            ...cachedRecord,
+            ...recordFromArrayWithValue(diffKeys, null),
+          },
+          recordGqlFields,
         });
 
         triggerUpdateRecordOptimisticEffect({

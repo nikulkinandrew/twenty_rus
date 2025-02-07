@@ -119,11 +119,15 @@ export const useDeleteManyRecords = ({
             return;
           }
 
+          const recordGqlFields = {
+            deletedAt: true,
+          };
           updateRecordFromCache({
             objectMetadataItems,
             objectMetadataItem,
             cache: apolloClient.cache,
             record: computedOptimisticRecord,
+            recordGqlFields,
           });
 
           computedOptimisticRecordsNode.push(optimisticRecordNode);
@@ -150,6 +154,9 @@ export const useDeleteManyRecords = ({
           const cachedRecordsNode: RecordGqlNode[] = [];
           const computedOptimisticRecordsNode: RecordGqlNode[] = [];
 
+          const recordGqlFields = {
+            deletedAt: true,
+          };
           cachedRecords.forEach((cachedRecord) => {
             if (isUndefinedOrNull(cachedRecord?.id)) {
               return;
@@ -159,7 +166,8 @@ export const useDeleteManyRecords = ({
               objectMetadataItems,
               objectMetadataItem,
               cache: apolloClient.cache,
-              record: cachedRecord,
+              record: { ...cachedRecord, deletedAt: null },
+              recordGqlFields,
             });
 
             const cachedRecordWithConnection =

@@ -73,11 +73,15 @@ export const useDeleteOneRecord = ({
         return null;
       }
 
+      const recordGqlFields = {
+        deletedAt: true,
+      };
       updateRecordFromCache({
         objectMetadataItems,
         objectMetadataItem,
         cache: apolloClient.cache,
         record: computedOptimisticRecord,
+        recordGqlFields,
       });
 
       triggerUpdateRecordOptimisticEffect({
@@ -113,11 +117,19 @@ export const useDeleteOneRecord = ({
           if (!cachedRecord) {
             throw error;
           }
+
+          const recordGqlFields = {
+            deletedAt: true,
+          };
           updateRecordFromCache({
             objectMetadataItems,
             objectMetadataItem,
             cache: apolloClient.cache,
-            record: cachedRecord,
+            record: {
+              ...cachedRecord,
+              deletedAt: null,
+            },
+            recordGqlFields,
           });
 
           triggerUpdateRecordOptimisticEffect({
