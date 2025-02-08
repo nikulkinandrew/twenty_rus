@@ -16,6 +16,7 @@ export const useRefreshObjectMetadataItems = (
   const client = useApolloMetadataClient();
 
   const refreshObjectMetadataItems = async () => {
+    // Fetch all object metadata, including fields.
     const result = await client.query<ObjectMetadataItemsQuery>({
       query: FIND_MANY_OBJECT_METADATA_ITEMS,
       variables: {},
@@ -28,6 +29,8 @@ export const useRefreshObjectMetadataItems = (
       });
 
     replaceObjectMetadataItemIfDifferent(objectMetadataItems);
+
+    return objectMetadataItems;
   };
 
   const replaceObjectMetadataItemIfDifferent = useRecoilCallback(
@@ -45,6 +48,7 @@ export const useRefreshObjectMetadataItems = (
       },
     [],
   );
+
   return {
     refreshObjectMetadataItems,
   };
